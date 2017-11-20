@@ -1,6 +1,6 @@
 # Cisco Meraki ExCap Splash Page Server /w Social OAuth using Passport
 
-##Overview
+## Overview
 
 This NodeJS applications demonstrates how the ExCap API can be used for delivering a custom Captive Portal / Splash Page with Cisco Meraki access points.
 
@@ -8,16 +8,16 @@ More info about the ExCap API: https://meraki.cisco.com/lib/pdf/meraki_whitepape
 
 Complete write-up for this application can be found here: http://www.InternetOfLEGO.com/wifi-hotspot-with-social-oauth-passport-mongodb
 
-###Written by
+### Written by
 Cory Guynn, 2016
 www.InternetOfLego.com
 
 
 
 
-#Installation
+# Installation
 
-##Configure the Cisco Meraki Wi-Fi SSID
+## Configure the Cisco Meraki Wi-Fi SSID
 
 * Logon to the Meraki Dashboard
 
@@ -27,7 +27,7 @@ www.InternetOfLego.com
 
 * Scroll down the page and enable the "Walled Garden". Enter the IP address of your web server, to provide access to your splash page content prior to authentication. Enter any additional IP addresses for hosted content such as social websites (OAuth), style sheets, images, terms of service, etc in this section as well.
 
-##Configure the Splash Page
+## Configure the Splash Page
 
 * Dashboard --> Wireless --> Configure --> Splash Page Select: Use custom URL
 
@@ -43,7 +43,7 @@ Click-through w/ Social Passport
 * http://yourserver/click
 
 
-#Run
+# Run
 
 
 Clone and install the app
@@ -54,16 +54,16 @@ npm install
 
 ```   
 
-##Install MongoDB
+## Install MongoDB
 
 Download and instructions:
 https://www.mongodb.org/downloads#production
 
-##Create Config files
+## Create Config files
 
 These files are used to store your API credentials, MongoDB connection, and configs (Express options). They are not included in the GitHub repo, so please copy and paste these samples into a new file.
 
-###config/auth.js
+### config/auth.js
 ```
 // config/auth.js
 
@@ -97,7 +97,7 @@ module.exports = {
 
 };
 ```
-###config/config.js
+### config/config.js
 
 This is where you will define the web port that the server listens on (i.e. 8181) and the SSL certificate information. You will need to create your own self-signed certificate or purchase one. This examples uses a GoDaddy SSL certificate and places the files in an SSL directory. 
 ```
@@ -114,7 +114,7 @@ module.exports = {
 };
 ```
 
-###config/database.js
+### config/database.js
 ```
 Store the connection string to your MongoDB database here
 
@@ -126,7 +126,7 @@ module.exports = {
 };
 ``` 
 
-#Start the Server and Test
+# Start the Server and Test
 
 While in the /excap-social directory, use "node" to start the application.
 
@@ -141,7 +141,7 @@ pm2 start app.js --name "excap-social"
 
 
 
-#Reporting
+# Reporting
 You can see the session data by going to the MongoDB REST API or exploring the MongoDB manually.
 
 *http://yourserver/ap1/v1/users
@@ -150,7 +150,7 @@ You can see the session data by going to the MongoDB REST API or exploring the M
 
 
 
-#Security Notes
+# Security Notes
 
 - You should run this using SSL. 
 - Store your session and user data in a secure system behind a firewall
@@ -158,7 +158,7 @@ You can see the session data by going to the MongoDB REST API or exploring the M
 
 
 
-##Disable MongoDB REST interface
+## Disable MongoDB REST interface
 
 Find the following code and comment out the middleware to prevent unauthorized access to sensitive session and user data after you have examined the data and place this into production. At that point, you may want to build a separate application to utilize this data or use a third party application. The MongoDB website offers several admin and reporting UI options.
 ```
